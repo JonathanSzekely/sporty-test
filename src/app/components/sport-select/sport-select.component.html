@@ -1,0 +1,10 @@
+<label for="SportFilter">Sport filter</label>
+<p-select
+  inputId="SportFilter"
+  [options]="(availableSports$ | async) || ['No data']"
+  [(ngModel)]="selectedSport"
+  (onChange)="onSportChange()"
+  placeholder="Select a sport"
+  [showClear]="true"
+  styleClass="w-full"
+></p-select>

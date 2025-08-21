@@ -1,0 +1,6 @@
+.card-wrap {
+  @apply cursor-pointer;
+  &.expanded {
+    @apply cursor-default;
+  }
+}

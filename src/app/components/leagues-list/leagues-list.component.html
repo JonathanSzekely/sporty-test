@@ -1,0 +1,28 @@
+<div class="leagues-container p-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+    <div>
+      <label for="LeagueNameSearch">League search</label>
+      <input
+        pInputText id="LeagueNameSearch" autocomplete="off" class="w-full"
+        [ngModel]="leagueNameSearchStr()"
+        (ngModelChange)="onSearchChange($event)"/>
+    </div>
+    <div>
+      <app-sport-select (sportSelected)="onSportSelect($event)"></app-sport-select>
+    </div>
+  </div>
+
+  @if (isLoading()) {
+    <p-progressSpinner />
+  } @else if (error()) {
+    <p-message severity="error" [text]="error()"></p-message>
+  } @else {
+    <div class="leagues-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+      @for (league of leagues(); track league.idLeague) {
+        <app-league-card
+          [league]="league"
+        />
+      }
+    </div>
+  }
+</div>

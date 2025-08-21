@@ -1,0 +1,12 @@
+<div class="card-wrap border border-gray-700 hover:border-gray-500 h-full {{badgeUrl ? 'expanded' : ''}}">
+  <p-card
+    (click)="onLeagueSelect(this.league().idLeague)"
+    header="{{ league().strLeague }}" subheader="{{ league().strSport }}"
+    styleClass="h-full">
+
+    <p>{{ league().strLeagueAlternate }}</p>
+    @if (badgeUrl) {
+      <img [src]="badgeUrl" alt="League badge" />
+    }
+  </p-card>
+</div>
